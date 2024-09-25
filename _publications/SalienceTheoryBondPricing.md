@@ -6,7 +6,7 @@ authors:
 abstract: 'We document a novel salience effect in the US corporate bond market. We find that bonds with lower salience theory (ST) value have higher returns in the subsequent month. The annualized differences in one-month holding excess returns between the lowest and highest ST deciles are 3.84% and 4.44% for equal-weighted and value-weighted portfolios. However, the salience effect is only exhibited in the most salient downside returns. These results indicate that corporate bond investors overweight salient negative returns when forming their expectations of future returns. Consequently, bonds with salient downside returns are undervalued and yield higher returns in the subsequent month.'
 collection: publications
 category: working_papers
-permalink: /research/LinZhangSalience
+permalink: /research/SalienceTheoryBondPricing
 excerpt: 'Updated draft available upon request.'
 date: 2022-09-30
 venue: ''
