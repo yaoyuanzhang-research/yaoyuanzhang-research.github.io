@@ -3,7 +3,7 @@ title: "Global Evidence on Unspanned Macro Risks in Dynamic Term Structure Model
 authors:
   - name: "Michel van der Wel"
     url: "https://personal.eur.nl/vanderwel/"
-abstract: 'There are mixed results on whether macro risks are spanned by the yield curve. This paper reviews the major arguments and takes a global perspective to obtain comprehensive evidence. We study a large cross-section of 22 countries, including both developed and emerging markets. Our regression evidence confirms that macro information provides explanatory power for bond excess returns on top of yield factors, in fact more so for emerging than for developed countries. This finding is particularly strong in emerging markets. From a mechanical perspective, discriminating between spanned and unspanned models when considering in-sample fit and term premium predictions makes no difference, while Sharpe ratios are more realistic for unspanned models.'
+abstract: '111'
 collection: publications
 category: working_papers
 permalink: /research/UnspannedMacroRisks
