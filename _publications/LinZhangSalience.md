@@ -2,7 +2,7 @@
 title: "Salience Theory and Corporate Bond Pricing"
 collection: publications
 category: working_papers
-permalink: /publication/LinZhangSalience
+permalink: /research/LinZhangSalience
 excerpt: 'Updated draft available upon request.'
 date: 2022-10-23
 venue: ''
