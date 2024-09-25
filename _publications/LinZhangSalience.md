@@ -1,10 +1,10 @@
 ---
-title: "Salience"
+title: "Salience Theory and Corporate Bond Pricing"
 collection: publications
-category: working papers
-permalink: /publication/LinZhangSalience.md
+category: 'working papers'
+permalink: /publication/LinZhangSalience
 excerpt: 'Updated draft available upon request.'
-date: 
+date: 2022-10-23
 venue: ''
 slidesurl: ''
 paperurl: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4228611'
