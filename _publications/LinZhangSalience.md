@@ -4,12 +4,12 @@ collection: publications
 category: working_papers
 permalink: /research/LinZhangSalience
 excerpt: 'Updated draft available upon request.'
-date: 2022-10-23
+date: 2022-09-30
 venue: ''
 paperurl: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4228611'
-citation: 'Your Name, You. (2010). &quot;Paper Title Number 2.&quot; <i>Journal 1</i>. 1(2).'
+citation: 'Lin, Tse-Chun and Zhang, Yaoyuan, Salience Theory and Corporate Bond Pricing (September 22, 2022). Available at SSRN: https://ssrn.com/abstract=4228611 or http://dx.doi.org/10.2139/ssrn.4228611'
 show_venue: false
 show_date: true
 ---
 
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
+We document a novel salience effect in the US corporate bond market. We find that bonds with lower salience theory (ST) value have higher returns in the subsequent month. The annualized differences in one-month holding excess returns between the lowest and highest ST deciles are 3.84|-.2.-| and 4.44|-.2.-| for equal-weighted and value-weighted portfolios. However, the salience effect is only exhibited in the most salient downside returns. These results indicate that corporate bond investors overweight salient negative returns when forming their expectations of future returns. Consequently, bonds with salient downside returns are undervalued and yield higher returns in the subsequent month.
