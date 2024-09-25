@@ -84,9 +84,9 @@
 
     {% if post.abstract %}
     <div class="abstract-container">
-      <div class="abstract-preview"></div>
-      <div class="abstract-full" style="display: none;">{{ post.abstract }}</div>
-      <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">Read more</a>
+      <p class="abstract-preview"></p>
+      <p class="abstract-full" style="display: none;">{{ post.abstract }}</p>
+      <button class="abstract-toggle" onclick="toggleAbstract(this)">Read more</button>
     </div>
     {% endif %}
     
@@ -105,44 +105,29 @@
 document.addEventListener('DOMContentLoaded', function() {
   var abstracts = document.querySelectorAll('.abstract-container');
   abstracts.forEach(function(container) {
-    var fullAbstract = container.querySelector('.abstract-full').innerHTML;
-    var preview = container.querySelector('.abstract-preview');
-    var toggle = container.querySelector('.abstract-toggle');
-
-    // Split the abstract into words, preserving HTML tags
-    var words = fullAbstract.match(/(<[^>]+>|[^<\s]+)\s*/g);
-
-    if (words && words.length > 30) {
-      // Join the first 30 words
-      var previewText = words.slice(0, 30).join('');
-      
-      // Ensure we close any open HTML tags
-      var div = document.createElement('div');
-      div.innerHTML = previewText;
-      previewText = div.innerHTML + '...';
-
-      preview.innerHTML = previewText;
-    } else {
-      // If 30 words or fewer, show full abstract and hide toggle
-      preview.innerHTML = fullAbstract;
-      toggle.style.display = 'none';
+    var fullAbstract = container.querySelector('.abstract-full').textContent;
+    var words = fullAbstract.trim().split(/\s+/);
+    var preview = words.slice(0, 30).join(' ');
+    if (words.length > 30) {
+      preview += '...';
     }
+    container.querySelector('.abstract-preview').textContent = preview;
   });
 });
 
-function toggleAbstract(link) {
-  var container = link.closest('.abstract-container');
+function toggleAbstract(button) {
+  var container = button.parentElement;
   var preview = container.querySelector('.abstract-preview');
   var full = container.querySelector('.abstract-full');
 
   if (full.style.display === 'none') {
     preview.style.display = 'none';
     full.style.display = 'block';
-    link.textContent = 'Read less';
+    button.textContent = 'Read less';
   } else {
     preview.style.display = 'block';
     full.style.display = 'none';
-    link.textContent = 'Read more';
+    button.textContent = 'Read more';
   }
 }
 </script>
