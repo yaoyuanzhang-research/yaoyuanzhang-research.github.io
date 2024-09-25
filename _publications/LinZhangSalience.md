@@ -1,5 +1,8 @@
 ---
 title: "Salience Theory and Corporate Bond Pricing"
+authors:
+  - name: "Tse-Chun Lin"
+    url: "https://www.hkubs.hku.hk/people/tse-chun-lin/"
 collection: publications
 category: working_papers
 permalink: /research/LinZhangSalience
