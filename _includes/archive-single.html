@@ -84,7 +84,14 @@
 
     {% if post.abstract %}
     <div class="abstract-container">
-      <p class="abstract-preview">{{ post.abstract | truncatewords: 50 }}</p>
+    <p class="abstract-preview">
+      {% assign words = post.abstract | split: ' ' %}
+      {% for word in words limit: 30 %}
+        {{ word }}
+        {% if forloop.last != true %} {% endif %}
+      {% endfor %}
+      {% if words.size > 30 %}...{% endif %}
+    </p>
       <p class="abstract-full" style="display: none;">{{ post.abstract }}</p>
       <button class="abstract-toggle" onclick="toggleAbstract(this)">Read more</button>
     </div>
