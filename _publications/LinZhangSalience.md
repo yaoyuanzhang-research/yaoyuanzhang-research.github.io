@@ -5,8 +5,6 @@ category: working_papers
 permalink: /publication/LinZhangSalience
 excerpt: 'Updated draft available upon request.'
 date: 2022-10-23
-venue: ''
-slidesurl: ''
 paperurl: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4228611'
 citation: 'Your Name, You. (2010). &quot;Paper Title Number 2.&quot; <i>Journal 1</i>. 1(2).'
 ---
