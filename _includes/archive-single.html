@@ -84,7 +84,7 @@
 
     {% if post.abstract %}
     <div class="abstract-container">
-      <p class="abstract-preview"></p>
+      <p class="abstract-preview">{{ post.abstract | truncatewords: 50 }}</p>
       <p class="abstract-full" style="display: none;">{{ post.abstract }}</p>
       <button class="abstract-toggle" onclick="toggleAbstract(this)">Read more</button>
     </div>
@@ -102,19 +102,6 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var abstracts = document.querySelectorAll('.abstract-container');
-  abstracts.forEach(function(container) {
-    var fullAbstract = container.querySelector('.abstract-full').textContent;
-    var words = fullAbstract.trim().split(/\s+/);
-    var preview = words.slice(0, 30).join(' ');
-    if (words.length > 30) {
-      preview += '...';
-    }
-    container.querySelector('.abstract-preview').textContent = preview;
-  });
-});
-
 function toggleAbstract(button) {
   var container = button.parentElement;
   var preview = container.querySelector('.abstract-preview');
