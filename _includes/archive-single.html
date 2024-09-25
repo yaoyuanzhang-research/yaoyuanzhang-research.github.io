@@ -84,7 +84,9 @@
 
     {% if post.abstract %}
     <div class="abstract-container">
-      <p class="abstract-content"></p>
+      <div class="abstract-preview"></div>
+      <div class="abstract-full" style="display: none;">{{ post.abstract }}</div>
+      <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">Read more</a>
     </div>
     {% endif %}
     
@@ -103,42 +105,44 @@
 document.addEventListener('DOMContentLoaded', function() {
   var abstracts = document.querySelectorAll('.abstract-container');
   abstracts.forEach(function(container) {
-    var fullAbstract = "{{ post.abstract | strip_newlines | escape }}";
-    var words = fullAbstract.trim().split(/\s+/);
-    var content = container.querySelector('.abstract-content');
-    
-    if (words.length > 30) {
-      var preview = words.slice(0, 30).join(' ') + '... ';
-      var link = document.createElement('a');
-      link.href = '#';
-      link.textContent = 'Read more';
-      link.onclick = function(e) {
-        e.preventDefault();
-        toggleAbstract(this);
-      };
+    var fullAbstract = container.querySelector('.abstract-full').innerHTML;
+    var preview = container.querySelector('.abstract-preview');
+    var toggle = container.querySelector('.abstract-toggle');
+
+    // Split the abstract into words, preserving HTML tags
+    var words = fullAbstract.match(/(<[^>]+>|[^<\s]+)\s*/g);
+
+    if (words && words.length > 30) {
+      // Join the first 30 words
+      var previewText = words.slice(0, 30).join('');
       
-      content.textContent = preview;
-      content.appendChild(link);
+      // Ensure we close any open HTML tags
+      var div = document.createElement('div');
+      div.innerHTML = previewText;
+      previewText = div.innerHTML + '...';
+
+      preview.innerHTML = previewText;
     } else {
-      content.textContent = fullAbstract;
+      // If 30 words or fewer, show full abstract and hide toggle
+      preview.innerHTML = fullAbstract;
+      toggle.style.display = 'none';
     }
   });
 });
 
 function toggleAbstract(link) {
   var container = link.closest('.abstract-container');
-  var content = container.querySelector('.abstract-content');
-  var fullAbstract = "{{ post.abstract | strip_newlines | escape }}";
-  
-  if (link.textContent === 'Read more') {
-    content.textContent = fullAbstract + ' ';
+  var preview = container.querySelector('.abstract-preview');
+  var full = container.querySelector('.abstract-full');
+
+  if (full.style.display === 'none') {
+    preview.style.display = 'none';
+    full.style.display = 'block';
     link.textContent = 'Read less';
-    content.appendChild(link);
   } else {
-    var preview = fullAbstract.split(/\s+/).slice(0, 30).join(' ') + '... ';
-    content.textContent = preview;
+    preview.style.display = 'block';
+    full.style.display = 'none';
     link.textContent = 'Read more';
-    content.appendChild(link);
   }
 }
 </script>
