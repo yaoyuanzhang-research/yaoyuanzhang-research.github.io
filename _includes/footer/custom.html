@@ -1,26 +1,31 @@
 <!-- start custom footer snippets -->
 <style>
-  #clustrmaps-widget {
+  #clustrmaps-widget-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     margin-bottom: 20px;
-    padding: 10px;
+  }
+  
+  #clustrmaps-widget {
     background-color: #f0f0f0; /* Light gray background */
     border-radius: 15px; /* Curved borders */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    overflow: hidden; /* Ensures the map doesn't overflow the curved borders */
+    padding: 10px;
+    display: inline-block; /* This will make the div wrap its content */
   }
   
-  #clustrmaps-widget > div {
-    border-radius: 10px; /* Curved borders for the map itself */
-    overflow: hidden;
+  #clustrmaps-widget img {
+    border-radius: 10px; /* Curved borders for the map image */
+    display: block; /* Removes any extra space below the image */
   }
 </style>
 
-<div id="clustrmaps-widget">
-  <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=284&t=tt&d=ZNNlFVg9wm5rxH6XQ7qfXAqE_tcdd2cDJirjUSfxtfc&co=a9dbff'></script>
+<div id="clustrmaps-widget-wrapper">
+  <div id="clustrmaps-widget">
+    <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=284&t=tt&d=ZNNlFVg9wm5rxH6XQ7qfXAqE_tcdd2cDJirjUSfxtfc&co=a9dbff'></script>
+  </div>
 </div>
 
 <a href="/sitemap/">Sitemap</a>
