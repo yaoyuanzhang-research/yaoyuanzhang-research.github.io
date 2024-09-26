@@ -7,7 +7,8 @@ redirect_from:
   - /about.html
 ---
 
-
+<br>
+<br>
 I am a lecturer (assistant professor) in finance at the Alliance Manchester Business School at the University of Manchester.​ 
 
 
