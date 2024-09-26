@@ -177,10 +177,6 @@
   min-width: 250px;
   background: $background-color;
 
-  @media screen and (max-width: $small) {
-    position: relative;
-  }
-
   a {
     display: block;
     margin: 0 1rem;
@@ -204,37 +200,14 @@
     color: #fff;
     cursor: pointer;
     z-index: 100;
-
-    @media screen and (max-width: $small) {
-      display: block;
-    }
-
-    @media screen and (min-width: $small + 1) {
-      display: none;
-    }
   }
 
   .visible-links {
     display: table;
 
-    @media screen and (max-width: $small) {
-       display: none;
-       position: absolute;
-       top: 100%;
-       left: 0;
-       right: 0;
-       background: $background-color;
-       z-index: 10;
-    }
-     
     li {
       display: table-cell;
       vertical-align: middle;
-
-      @media screen and (max-width: $small) {
-         display: block;
-         border-bottom: 1px solid $border-color;
-      }
 
       &:first-child {
         font-weight: bold;
