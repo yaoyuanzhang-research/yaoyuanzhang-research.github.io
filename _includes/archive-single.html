@@ -84,9 +84,8 @@
 
     {% if post.abstract %}
     <div class="abstract-container">
-      <p class="abstract-preview">{{ post.abstract | truncatewords: 50 }}</p>
-      <p class="abstract-full" style="display: none;">{{ post.abstract }}</p>
-      <button class="abstract-toggle" onclick="toggleAbstract(this)">Read more</button>
+      <p class="abstract-preview">{{ post.abstract | truncatewords: 50 }} <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">Read more</a></p>
+      <p class="abstract-full" style="display: none;">{{ post.abstract }} <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">Read less</a></p>
     </div>
     {% endif %}
     
@@ -102,19 +101,17 @@
 </div>
 
 <script>
-function toggleAbstract(button) {
-  var container = button.parentElement;
+function toggleAbstract(link) {
+  var container = link.closest('.abstract-container');
   var preview = container.querySelector('.abstract-preview');
   var full = container.querySelector('.abstract-full');
 
   if (full.style.display === 'none') {
     preview.style.display = 'none';
     full.style.display = 'block';
-    button.textContent = 'Read less';
   } else {
     preview.style.display = 'block';
     full.style.display = 'none';
-    button.textContent = 'Read more';
   }
 }
 </script>
