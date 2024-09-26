@@ -17,6 +17,6 @@ My research interest lies in empirical asset pricing, international finance, mac
 
 ## Contact
 
-Email: yzhang08@connect.hku.hk
+Email: yaoyuan.zhang@manchester.ac.uk
 
 [SSRN Author Page](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=2785754)
