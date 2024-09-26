@@ -13,3 +13,10 @@ I am a lecturer (assistant professor) in finance at the Alliance Manchester Busi
 
 
 My research interest lies in empirical asset pricing, international finance, macro-finance, and behavioral finance. I have a particular interest in the corporate bond market.
+
+<br>
+
+### Contact
+Email: yzhang08@connect.hku.hk
+
+[SSRN Author Page](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=2785754)
