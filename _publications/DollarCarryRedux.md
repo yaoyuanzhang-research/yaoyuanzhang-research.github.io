@@ -1,4 +1,5 @@
 ---
+order: 3
 title: "Dollar and Carry Redux"
 authors:
   - name: "Sining Liu"
