@@ -7,7 +7,7 @@ abstract: 'We find that the lower the corporate bond minimum daily returns in th
 collection: publications
 category: working_papers
 permalink_disabled: /research/ExtrapolationMinimumReturns
-excerpt: 'Draft available upon request.'
+excerpt: ''
 presented_at: 'HKU, FMA 2022'
 ---
 
