@@ -24,7 +24,7 @@ author:
   avatar           : "vip1.webp"
   name             : "Yaoyuan Zhang 张耀元"
   pronouns         : # example: "she/her"  
-  bio              : "PhD in Finance, HKU"
+  bio              : "PhD in Finance"
   location         : "Manchester, UK"
   employer         : "University of Manchester"
   uri              : # URL
@@ -78,9 +78,11 @@ publication_category:
   books:
     title: 'Books'
   manuscripts:
-    title: 'Journal Articles'    
+    title: 'Journal Articles'
   conferences:
     title: 'Conference Papers'
+  publications:
+    title: 'Publications'
   working_papers:
     title: 'Working Papers'
 
