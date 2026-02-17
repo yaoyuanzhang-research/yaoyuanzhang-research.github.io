@@ -30,7 +30,7 @@
   {%- if post.authors and post.authors.size > 0 -%}
     {%- for author in post.authors -%}
       {%- if author.url -%}
-        <a href="{{ author.url }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
+        <p>{{ author.name }}</p>{% unless forloop.last %}, {% endunless %}
       {%- else -%}
         {{ author.name }}{% unless forloop.last %}, {% endunless %}
       {%- endif -%}
@@ -55,7 +55,7 @@
   <h2 class="archive__item-title" itemprop="headline">
     <a href="{{ title_link }}">{{ title }}</a>
     {%- if coauthor_inline or journal_inline -%}
-      <span class="pub-meta-inline">, with {{ coauthor_inline | strip }}{{ journal_inline | strip }}</span>
+      <span>, with {{ coauthor_inline | strip }}{{ journal_inline | strip }}</span>
     {%- endif -%}
     <span class="pub-actions">{{ pub_actions | strip }}</span>
   </h2>
