@@ -25,17 +25,16 @@
       }
     }
   }
-}
 
   a.author__link,
   .author__link {
-    text-decoration: unset;
+    text-decoration: none;
     color: inherit;
   }
 
   a.author__link:hover,
   .author__link:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 
