@@ -7,7 +7,7 @@ abstract: 'We document a novel salience effect in the US corporate bond market. 
 collection: publications
 category: working_papers
 permalink: /research/SalienceTheoryBondPricing
-excerpt: 'Updated draft available upon request.'
+excerpt: ''
 paperurl: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4228611'
 citation: 'Lin, Tse-Chun and Zhang, Yaoyuan, Salience Theory and Corporate Bond Pricing (September 22, 2022). Available at SSRN: https://ssrn.com/abstract=4228611 or http://dx.doi.org/10.2139/ssrn.4228611'
 ---
