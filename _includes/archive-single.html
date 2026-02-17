@@ -103,8 +103,8 @@
 
   {% if post.abstract %}
   <div class="abstract-container">
-    <p class="abstract-preview">{{ post.abstract | truncatewords: 25 }} <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">Read more</a></p>
-    <p class="abstract-full" style="display: none;">{{ post.abstract }} <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">Read less</a></p>
+    <p class="abstract-preview">{{ post.abstract | truncatewords: 50 }} <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">[+]</a></p>
+    <p class="abstract-full" style="display: none;">{{ post.abstract }} <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">[-]</a></p>
   </div>
   {% endif %}
 
