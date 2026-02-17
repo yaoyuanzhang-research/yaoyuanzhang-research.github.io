@@ -28,7 +28,6 @@
 {%- comment -%} Inline coauthors: ", coauthored with A, B" {%- endcomment -%}
 {%- capture coauthor_inline -%}
   {%- if post.authors and post.authors.size > 0 -%}
-    , with 
     {%- for author in post.authors -%}
       {%- if author.url -%}
         <a href="{{ author.url }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
@@ -56,7 +55,7 @@
   <h2 class="archive__item-title" itemprop="headline">
     <a href="{{ title_link }}">{{ title }}</a>
     {%- if coauthor_inline or journal_inline -%}
-      <span class="pub-meta-inline">{{ coauthor_inline | strip }}{{ journal_inline | strip }}</span>
+      <span class="pub-meta-inline">, with {{ coauthor_inline | strip }}{{ journal_inline | strip }}</span>
     {%- endif -%}
     <span class="pub-actions">{{ pub_actions | strip }}</span>
   </h2>
@@ -103,14 +102,27 @@
     </div>
   {%- endif -%}
 
-  {%- comment -%} Optional abstract toggle (kept as you had it) {%- endcomment -%}
-  {%- if post.abstract -%}
-    <div class="archive__abstract">
-      <span class="archive__abstract-short">{{ post.abstract | truncatewords: 50 }}</span>
-      <a href="#" class="archive__abstract-toggle"> Read more</a>
-      <span class="archive__abstract-full">{{ post.abstract }}</span>
-      <a href="#" class="archive__abstract-toggle-less"> Read less</a>
-    </div>
-  {%- endif -%}
+  {% if post.abstract %}
+  <div class="abstract-container">
+    <p class="abstract-preview">{{ post.abstract | truncatewords: 50 }} <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">Read more</a></p>
+    <p class="abstract-full" style="display: none;">{{ post.abstract }} <a href="#" class="abstract-toggle" onclick="toggleAbstract(this); return false;">Read less</a></p>
+  </div>
+  {% endif %}
 
 </article>
+
+<script>
+function toggleAbstract(link) {
+  var container = link.closest('.abstract-container');
+  var preview = container.querySelector('.abstract-preview');
+  var full = container.querySelector('.abstract-full');
+
+  if (full.style.display === 'none') {
+    preview.style.display = 'none';
+    full.style.display = 'block';
+  } else {
+    preview.style.display = 'block';
+    full.style.display = 'none';
+  }
+}
+</script>
