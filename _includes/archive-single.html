@@ -30,7 +30,7 @@
   {%- if post.authors and post.authors.size > 0 -%}
     {%- for author in post.authors -%}
       {%- if author.url -%}
-        <span>, with </span><p>{{ author.name }}</p>{% unless forloop.last %}, {% endunless %}
+        <span>, with</span><span> {{ author.name }}</span>{% unless forloop.last %}, {% endunless %}
       {%- else -%}
         {{ author.name }}{% unless forloop.last %}, {% endunless %}
       {%- endif -%}
