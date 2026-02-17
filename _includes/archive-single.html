@@ -55,7 +55,7 @@
   <h2 class="archive__item-title" itemprop="headline">
     <a href="{{ title_link }}">{{ title }}</a>
     {%- if coauthor_inline or journal_inline -%}
-      <span>, with {{ coauthor_inline | strip }}{{ journal_inline | strip }}</span>
+      <span>{{ coauthor_inline | strip }}{{ journal_inline | strip }}</span>
     {%- endif -%}
     <span class="pub-actions">{{ pub_actions | strip }}</span>
   </h2>
