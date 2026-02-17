@@ -13,7 +13,7 @@ presented_at: 'AFBC 2022*, HKU*, UNC*, SMU*, NTU*, CICF 2023*'
 collection: publications
 category: working_papers
 permalink: /research/DollarCarryRedux
-excerpt_disabled: 'Updated draft available upon request.'
+excerpt: ''
 paperurl: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4150881'
 citation: 'Liu, Sining and Maurer, Thomas Andreas and Vedolin, Andrea and Zhang, Yaoyuan, Dollar and Carry Redux * (July 1, 2022). Available at SSRN: https://ssrn.com/abstract=4150881 or http://dx.doi.org/10.2139/ssrn.4150881'
 ---
