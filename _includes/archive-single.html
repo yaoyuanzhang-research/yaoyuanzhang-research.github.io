@@ -13,8 +13,8 @@
 {%- endif -%}
 
 {%- comment -%}
-  Title should go directly to journal/SSRN (paperurl) when available.
-  Fallback: post.link, else internal abstract page.
+  Title should go directly to journal/SSRN when available.
+  Use paperurl first, then link, else internal abstract page.
 {%- endcomment -%}
 {%- if post.paperurl -%}
   {%- assign title_link = post.paperurl -%}
@@ -23,10 +23,9 @@
 {%- else -%}
   {%- assign title_link = base_path | append: post.url -%}
 {%- endif -%}
-
 {%- assign abstract_link = base_path | append: post.url -%}
 
-{%- comment -%} Inline coauthor string {%- endcomment -%}
+{%- comment -%} Inline coauthors: ", coauthored with A, B" {%- endcomment -%}
 {%- capture coauthor_inline -%}
   {%- if post.authors and post.authors.size > 0 -%}
     , coauthored with
@@ -40,68 +39,95 @@
   {%- endif -%}
 {%- endcapture -%}
 
-{%- comment -%} Inline journal string (use published_in when enabled) {%- endcomment -%}
+{%- comment -%}
+  Inline "Journal of xxx" part:
+  Prefer published_in, else (for publications) fall back to citation.
+{%- endcomment -%}
 {%- capture journal_inline -%}
-  {%- if post.collection == 'publications' and post.show_published_in and post.published_in -%}
+  {%- if post.published_in -%}
     , {{ post.published_in }}
+  {%- elsif post.collection == 'publications' and post.citation -%}
+    , {{ post.citation }}
   {%- endif -%}
 {%- endcapture -%}
 
-{%- comment -%} Small action icons on the same line {%- endcomment -%}
+{%- comment -%} Small icons (paper/slides/abstract) {%- endcomment -%}
 {%- capture pub_actions -%}
   {%- if post.paperurl -%}
     <a class="pub-action" href="{{ post.paperurl }}" title="Paper" aria-label="Paper">
-      <i class="fas fa-file-pdf"></i>
+      <i class="fas fa-file-pdf" aria-hidden="true"></i>
     </a>
   {%- endif -%}
   {%- if post.slidesurl -%}
     <a class="pub-action" href="{{ post.slidesurl }}" title="Slides" aria-label="Slides">
-      <i class="fas fa-file-powerpoint"></i>
+      <i class="fas fa-file-powerpoint" aria-hidden="true"></i>
     </a>
   {%- endif -%}
   <a class="pub-action" href="{{ abstract_link }}" title="Abstract page" aria-label="Abstract page">
-    <i class="fas fa-link"></i>
+    <i class="fas fa-link" aria-hidden="true"></i>
   </a>
 {%- endcapture -%}
 
-{%- comment -%}
-  Title line: external link + inline meta + icons
-{%- endcomment -%}
-## <a href="{{ title_link }}">{{ title }}</a><span class="pub-meta-inline">{{ coauthor_inline | strip }}{{ journal_inline | strip }}</span><span class="pub-actions">{{ pub_actions | strip }}</span>
+<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
 
-{%- if post.read_time -%}
-  {% include read-time.html %}
-{%- endif -%}
+  <h2 class="archive__item-title" itemprop="headline">
+    <a href="{{ title_link }}">{{ title }}</a>
+    {%- if coauthor_inline or journal_inline -%}
+      <span class="pub-meta-inline">{{ coauthor_inline | strip }}{{ journal_inline | strip }}</span>
+    {%- endif -%}
+    <span class="pub-actions">{{ pub_actions | strip }}</span>
+  </h2>
 
-{%- if post.collection == 'teaching' -%}
-  {{ post.type }}, {{ post.venue }}, {{ post.date | default: "1900-01-01" | date: "%Y" }}
-
-{%- elsif post.collection == 'publications' -%}
-  {%- if post.show_date and post.date -%}
-    {{ site.data.ui-text[site.locale].date_label | default: "Published:" }} {{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}
+  {%- if post.read_time -%}
+    {% include read-time.html %}
   {%- endif -%}
 
-  {%- if post.presented_at -%}
-    Presented at {{ post.presented_at }}
+  {%- comment -%} Meta line (date / venue / presented_at) on its own line {%- endcomment -%}
+  {%- if post.collection == 'teaching' -%}
+    <p class="page__meta">
+      {{ post.type }}, {{ post.venue }}, {{ post.date | default: "1900-01-01" | date: "%Y" }}
+    </p>
+
+  {%- elsif post.collection == 'publications' -%}
+    {%- if post.show_date and post.date -%}
+      <p class="page__meta">
+        {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}
+        {{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}
+      </p>
+    {%- endif -%}
+
+    {%- if post.presented_at -%}
+      <p class="page__meta">Presented at {{ post.presented_at }}</p>
+    {%- endif -%}
+
+  {%- elsif post.date -%}
+    <p class="page__meta">
+      {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}
+      {{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}
+    </p>
   {%- endif -%}
 
-{%- elsif post.date -%}
-  {{ site.data.ui-text[site.locale].date_label | default: "Published:" }} {{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}
-{%- endif -%}
+  {%- comment -%} Excerpt / Read more behavior {%- endcomment -%}
+  {%- if post.excerpt and site.read_more != 'enabled' -%}
+    <div class="archive__item-excerpt" itemprop="description">
+      {{ post.excerpt | markdownify }}
+    </div>
 
-{%- if post.excerpt and site.read_more != 'enabled' -%}
-  {{ post.excerpt | markdownify }}
+  {%- elsif post.excerpt and site.read_more == 'enabled' -%}
+    <div class="archive__item-excerpt" itemprop="description">
+      {{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}
+      <a href="{{ abstract_link }}"> Read more</a>
+    </div>
+  {%- endif -%}
 
-{%- elsif post.excerpt and site.read_more == 'enabled' -%}
-  {{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}
-  <a href="{{ abstract_link }}"> Read more</a>
-{%- endif -%}
+  {%- comment -%} Optional abstract toggle (kept as you had it) {%- endcomment -%}
+  {%- if post.abstract -%}
+    <div class="archive__abstract">
+      <span class="archive__abstract-short">{{ post.abstract | truncatewords: 50 }}</span>
+      <a href="#" class="archive__abstract-toggle"> Read more</a>
+      <span class="archive__abstract-full">{{ post.abstract }}</span>
+      <a href="#" class="archive__abstract-toggle-less"> Read less</a>
+    </div>
+  {%- endif -%}
 
-{%- if post.abstract -%}
-  <div class="archive__abstract">
-    <span class="archive__abstract-short">{{ post.abstract | truncatewords: 50 }}</span>
-    <a href="#" class="archive__abstract-toggle"> Read more</a>
-    <span class="archive__abstract-full">{{ post.abstract }}</span>
-    <a href="#" class="archive__abstract-toggle-less"> Read less</a>
-  </div>
-{%- endif -%}
+</article>
