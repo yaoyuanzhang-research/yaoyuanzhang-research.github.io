@@ -31,7 +31,7 @@
     <span>, with</span>
     {%- for author in post.authors -%}
       {%- if author.url -%}
-        <a href="{{ author.url }}"> {{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
+        <a href="{{ author.url }}" class="author__link"> {{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
       {%- else -%}
         {{ author.name }}{% unless forloop.last %}, {% endunless %}
       {%- endif -%}
