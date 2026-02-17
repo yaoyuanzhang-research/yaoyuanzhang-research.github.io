@@ -28,7 +28,7 @@
 {%- comment -%} Inline coauthors: ", coauthored with A, B" {%- endcomment -%}
 {%- capture coauthor_inline -%}
   {%- if post.authors and post.authors.size > 0 -%}
-    , coauthored with
+    , with 
     {%- for author in post.authors -%}
       {%- if author.url -%}
         <a href="{{ author.url }}">{{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
@@ -49,23 +49,6 @@
   {%- elsif post.collection == 'publications' and post.citation -%}
     , {{ post.citation }}
   {%- endif -%}
-{%- endcapture -%}
-
-{%- comment -%} Small icons (paper/slides/abstract) {%- endcomment -%}
-{%- capture pub_actions -%}
-  {%- if post.paperurl -%}
-    <a class="pub-action" href="{{ post.paperurl }}" title="Paper" aria-label="Paper">
-      <i class="fas fa-file-pdf" aria-hidden="true"></i>
-    </a>
-  {%- endif -%}
-  {%- if post.slidesurl -%}
-    <a class="pub-action" href="{{ post.slidesurl }}" title="Slides" aria-label="Slides">
-      <i class="fas fa-file-powerpoint" aria-hidden="true"></i>
-    </a>
-  {%- endif -%}
-  <a class="pub-action" href="{{ abstract_link }}" title="Abstract page" aria-label="Abstract page">
-    <i class="fas fa-link" aria-hidden="true"></i>
-  </a>
 {%- endcapture -%}
 
 <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
