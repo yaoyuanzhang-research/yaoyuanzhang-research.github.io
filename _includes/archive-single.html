@@ -28,9 +28,10 @@
 {%- comment -%} Inline coauthors: ", coauthored with A, B" {%- endcomment -%}
 {%- capture coauthor_inline -%}
   {%- if post.authors and post.authors.size > 0 -%}
+    <span>, with</span>
     {%- for author in post.authors -%}
       {%- if author.url -%}
-        <span>, with</span><span> {{ author.name }}</span>{% unless forloop.last %}, {% endunless %}
+        <span> {{ author.name }}</span>{% unless forloop.last %}, {% endunless %}
       {%- else -%}
         {{ author.name }}{% unless forloop.last %}, {% endunless %}
       {%- endif -%}
@@ -45,8 +46,6 @@
 {%- capture journal_inline -%}
   {%- if post.published_in -%}
     , {{ post.published_in }}
-  {%- elsif post.collection == 'publications' and post.citation -%}
-    , {{ post.citation }}
   {%- endif -%}
 {%- endcapture -%}
 
