@@ -31,7 +31,7 @@
     <span>, with</span>
     {%- for author in post.authors -%}
       {%- if author.url -%}
-        <span> {{ author.name }}</span>{% unless forloop.last %}, {% endunless %}
+        <a href="{{ author.url }}"> {{ author.name }}</a>{% unless forloop.last %}, {% endunless %}
       {%- else -%}
         {{ author.name }}{% unless forloop.last %}, {% endunless %}
       {%- endif -%}
@@ -52,7 +52,7 @@
 <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
 
   <h2 class="archive__item-title" itemprop="headline">
-    <a href="{{ title_link }}">{{ title }}</a>
+    <a href="{{ title_link }}">{{ title | strip }}</a>
     {%- if coauthor_inline or journal_inline -%}
       <span>{{ coauthor_inline | strip }}{{ journal_inline | strip }}</span>
     {%- endif -%}
